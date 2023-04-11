@@ -1,0 +1,47 @@
+<div class="row g-3">
+    <div class="container col-12 align-middle" style="background-color:#e9ecef">
+        <div class="container col-12 align-middle" style="background-color:#e9ecef">
+            <h2 class="text-left" style="color:blue">Bienvenido {{username}}
+                <img src={{userimg}} alt="imagen del user" width="70px">
+                <button class="btn btn-primary btn-sm center-block" onclick="location.href='/cart'">Carrito</button>
+                <button class="btn btn-primary btn-sm center-block" onclick="location.href='/profile'">Perfil</button>
+                <button class="btn btn-primary btn-sm center-block" onclick="location.href='/logout'">Cerrar sesion</button>
+            </h2>
+        </div>
+    </div>
+    <br>
+    {{!-- <form class="row g-3" action="/products" method="POST">  --}}
+        <hr>        
+        <table class="table table-sm table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Cantidad</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                
+            </tbody>
+        </table>
+        <script>
+            $('#table-body').empty();
+            fetch('/products')
+                .then(response => response.json())
+                .then(data => data.forEach( (element) => {
+                        $('#table-body').append(`
+                        <tr>
+                            <td>${element._id}</td>
+                            <td>${element.descripcion}</td>
+                            <td>${element.precio}</td>
+                            <td><img src="${element.imagen}" width=50px></td>
+                            <td><input type="number" name='cantidad' id="cantidad" /></td>
+                            <td><button class="btn btn-primary btn-sm center-block" id="carritoComprar">Añadir al Carrito</button></td>
+                        </tr>
+                    `)
+                }));
+        </script>
+    {{!-- </form> --}}
+</div>

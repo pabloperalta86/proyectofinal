@@ -1,0 +1,61 @@
+    <br>
+    <br>
+    <br>
+    <div class="row g-3">
+        <div class="container col-6 align-middle" style="background-color:#e9ecef">
+            <div class="container col-6 align-middle" style="background-color:#e9ecef">
+                <br>
+                <h2 class="text-center" style="color:blue">Register</h2>
+                <form class="mt-5" action="/register" enctype="multipart/form-data" method="post">
+                    <div class="form-group">
+                        <label for="Usuario"></label>
+                        <input required="required" type="email" class="form-control col-10" name= 'username' id="username" placeholder="Mail" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Clave"></label>
+                        <input required="required" type="password" autocomplete="false" class="form-control col-10" name= 'password' id="password" placeholder="Contraseña" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Nombre"></label>
+                        <input required="required" type="text" autocomplete="false" class="form-control col-10" name= 'nombre' id="nombre" placeholder="Nombre" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Edad"></label>
+                        <input required="required" type="number" autocomplete="false" class="form-control col-10" name= 'edad' id="edad" placeholder="Edad" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Direccion"></label>
+                        <input required="required" type="text" autocomplete="false" class="form-control col-10" name= 'direccion' id="direccion" placeholder="Dirección" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Telefono"></label>
+                        <input required="required" type="number" autocomplete="false" class="form-control col-10" name= 'telefono' id="telefono" placeholder="Nº Telefono" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Foto"></label>
+                        <input required="required" accept="image/*" type="file" autocomplete="false" class="form-control col-10" name= 'foto' id="foto" placeholder="Foto" />
+                    </div>
+
+                    <div class="col-12 center" style="padding-top: 23px;">
+                        <input type="submit" class="center btn btn-primary col-12" id="registrarse" value="Registrarse"/>
+                    </div>
+                    <div class="col-12 center" style="padding-top: 23px;">
+                        <a href="./login">
+                            <input type="button" class="center btn btn-primary col-12" id="button" value="Ir al Login"/>
+                        </a>
+                    </div>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+                integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+                crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+                integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+                crossorigin="anonymous">
+        </script>
