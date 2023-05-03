@@ -1,5 +1,5 @@
-import mongoose from "../db/conexion.js";
-import { logger } from "../log/logger.js";
+import mongoose from "../../config/dbConnection.js";
+import { logger } from "../../utils/log/logger.js";
 
 class ContenedorMongo{
     constructor(model){

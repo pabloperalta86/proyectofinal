@@ -1,61 +1,28 @@
-import express from "express";
-import bcrypt from "bcrypt";
-import {users} from "../models/users.js";
-import passport from "passport";
-import {Strategy} from "passport-local";
-import { upload } from "../storage/storage.js";
-import {transporter, userGmail} from "../messages/gmail.js";
-import { logger } from "../log/logger.js";
+import {getFindUser,getUsers,saveUser,getUserById,updateUserById,deleteUserById,deleteUsers} from "../services/users.js";
+import {transporter, userGmail} from "../utils/messages/gmail.js";
+import { logger } from "../utils/log/logger.js";
 
-
-const LocalStrategy = Strategy;
-const BCRYP_SALT_ROUNDS = 12;
-
-const authRouter = express.Router();
-passport.use(new LocalStrategy(
-    async function (username, password, done) {
-        const doc = users.findOne({user:username}).then((doc)=>{
-            if (username && password){
-                if (!doc) {
-                    return done(null, false);
-                } else {
-                    bcrypt.compare(password, doc.password)
-                    .then((valid)=>{
-                        if (valid){
-                            return done(null, doc)
-                        } else {
-                            return done(null, false)
-                        }
-                    })
-                }           
-            }
-        });
+const getUsersController = async(req,res)=>{
+    try {
+        const users = await getUsers();
+        res.json({status:"success",data:users});
+    } catch (error) {
+        console.log(error);
+        res.json({status:"error",message:error.message});
     }
-));
+};
 
-passport.serializeUser((doc, done) => {
-    done(null, doc);
-});
-
-passport.deserializeUser((doc, done) => {
-    const existeUsuario = users.findOne({user:doc.user}).then((doc)=>doc.user == doc.username);   
-    done(null, existeUsuario);
-});
-
-authRouter.post("/signup", passport.authenticate("local",{
-    failureRedirect:"/api/auth/signupError",
-    failureMessage:"Usuario o contraseña incorrecto"
-}), (req,res)=>{
+const postSignUpController = async(req,res)=>{
     res.send("Usuario registrado y autenticado")
-});
+};
 
-authRouter.get("/signupError",(req,res)=>{
+const getSignUpErrorController = async(req,res)=>{
     const errorMessage = req.session.messages[0] || '';
     req.session.messages = [];
     res.json({error:errorMessage})
-});
+};
 
-authRouter.post("/logout",(req,res)=>{
+const postLogOutController = async(req,res)=>{
     req.logOut(err=>{
         if(err) return res.status(400).json({error:"No se pudo cerrar la sesion"});
         req.session.destroy(err=>{
@@ -63,16 +30,16 @@ authRouter.post("/logout",(req,res)=>{
             res.status(200).json({message:"sesion finalizada"})
         });
     });
-});
+};
 
-authRouter.get("/profile", (req,res) => {
+const getProfileController = async(req,res) => {
     res.send(req.session.passport.user);
-})
+};
 
-authRouter.post("/register", upload.single("foto"), async(req,res)=>{
+const postRegisterController = async(req,res)=>{
     logger.info(`Ruta correcta: ${req.url} - Metodo: ${req.method}`);
     const {username, password, nombre, edad, direccion, telefono, foto} = await req.body;
-    const doc = users.findOne({user:username}).then((doc)=>{
+    const doc = getFindUser({user:username}).then((doc)=>{
         if(username && password){
             if (doc) {
                 res.render("registerError");
@@ -80,7 +47,7 @@ authRouter.post("/register", upload.single("foto"), async(req,res)=>{
                 bcrypt.hash(password,BCRYP_SALT_ROUNDS)
                 .then(async (hashPassword) =>{
                     try {
-                        await users.create({user:username, password:hashPassword, nombre:nombre, edad:edad, 
+                        await saveUser({user:username, password:hashPassword, nombre:nombre, edad:edad, 
                                 direccion:direccion, telefono:telefono, foto: req.file.filename}).then((doc)=>doc);
                         const port = req.app.settings.port || process.env.PORT; 
                         const urlfoto = req.protocol + '://' + req.get("host") + "/public/"+req.file.filename;
@@ -105,7 +72,6 @@ authRouter.post("/register", upload.single("foto"), async(req,res)=>{
                             };
                         try {
                             await transporter.sendMail(mailOptions);
-                            //res.send(`Se envio el mensaje a ${global.AdminEmail}`);
                             res.redirect("/login");
                             logger.info(`Se envio el mensaje a ${global.AdminEmail}`);
                         } catch (error) {
@@ -122,6 +88,7 @@ authRouter.post("/register", upload.single("foto"), async(req,res)=>{
             res.send("Por favor ingresa el usuario y clave")
         }
     });
-});
+};
 
-export default authRouter;
+export {getUsersController,postSignUpController,getSignUpErrorController,postLogOutController,getProfileController,
+    postRegisterController};

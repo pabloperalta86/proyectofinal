@@ -1,4 +1,4 @@
-import mongoose from "../db/conexion.js";
+import mongoose from "mongoose";
 
     const Schema = mongoose.Schema;
     const ObjectId = Schema.ObjectId;
@@ -12,6 +12,6 @@ import mongoose from "../db/conexion.js";
         foto: String
     });
     
-const users = new mongoose.model('users', UserSchema);
+const UserModel = new mongoose.model('users', UserSchema);
 
-export {users};
+export {UserModel};

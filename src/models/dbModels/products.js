@@ -1,4 +1,4 @@
-import mongoose from "../db/conexion.js";
+import mongoose from "mongoose";
 
 const productCollection = "products";
 

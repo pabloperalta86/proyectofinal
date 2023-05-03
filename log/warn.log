@@ -142,3 +142,8 @@
 [2023-04-09T20:47:06.166] [WARN] default - Ruta inexistente en el servidor: /login - Metodo: POST
 [2023-04-10T00:52:05.570] [WARN] default - Ruta inexistente en el servidor: /api/carritos/aviso-whatsapp - Metodo: POST
 [2023-04-10T00:59:57.788] [WARN] default - Ruta inexistente en el servidor: /api/auth/singup - Metodo: POST
+[2023-05-02T00:48:15.108] [WARN] default - Ruta inexistente en el servidor: /products - Metodo: GET
+[2023-05-02T00:51:43.625] [WARN] default - Ruta inexistente en el servidor: /api/auth/ - Metodo: GET
+[2023-05-02T00:51:53.880] [WARN] default - Ruta inexistente en el servidor: /api/auth/singup/ - Metodo: GET
+[2023-05-02T00:52:21.194] [WARN] default - Ruta inexistente en el servidor: /api/auth/singup/ - Metodo: POST
+[2023-05-02T21:25:30.898] [WARN] default - Ruta inexistente en el servidor: /api/auth/signup/ - Metodo: GET

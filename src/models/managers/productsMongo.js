@@ -1,4 +1,4 @@
-import { ContenedorMongo } from "../managers/ContenedorMongo.js";
+import { ContenedorMongo } from "../models/managers/ContenedorMongo.js";
 
 class ProductosDaoMongo extends ContenedorMongo{
     constructor(model){

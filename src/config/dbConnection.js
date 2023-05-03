@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
-dotenv.config();
+import {options} from "./options.js";
 
 mongoose.set('strictQuery', false);
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect(options.mongo.url)
     .then(()=> {
         console.log('Base de datos conectada');
     }).catch((err)=> {

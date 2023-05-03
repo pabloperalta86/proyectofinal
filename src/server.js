@@ -3,12 +3,12 @@ import cluster from "cluster";
 import session from "express-session";
 import { engine } from "express-handlebars";
 import passport from "passport";
-import productsRouter from "./routes/productsRouter.js";
-import cartsRouter from "./routes/cartsRouter.js";
-import authRouter from "./routes/authRouter.js";
-import { logger } from "./log/logger.js";
+import productsRouter from "./routes/products.js";
+import cartsRouter from "./routes/carts.js";
+import usersRouter from "./routes/users.js";
+import { logger } from "./utils/log/logger.js";
 import os from "os";
-
+import mongoose from "./config/dbConnection.js";
 const PORT = process.env.PORT || 8080;
 const MODE = process.env.SERVER_MODE || "FORK";
 global.AdminEmail = "pablo.cavs.86@gmail.com";
@@ -44,7 +44,7 @@ if (MODE === "CLUSTER" && cluster.isPrimary){
     app.use(passport.session());
     app.use('/api/productos', productsRouter);
     app.use('/api/carritos', cartsRouter);
-    app.use("/api/auth", authRouter);
+    app.use("/api/auth", usersRouter);
     
     app.use((req,_res,next) => {
         logger.info(`Ruta inexistente en el servidor: ${req.url} - Metodo: ${req.method}`);
