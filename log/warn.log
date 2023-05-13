@@ -147,3 +147,16 @@
 [2023-05-02T00:51:53.880] [WARN] default - Ruta inexistente en el servidor: /api/auth/singup/ - Metodo: GET
 [2023-05-02T00:52:21.194] [WARN] default - Ruta inexistente en el servidor: /api/auth/singup/ - Metodo: POST
 [2023-05-02T21:25:30.898] [WARN] default - Ruta inexistente en el servidor: /api/auth/signup/ - Metodo: GET
+[2023-05-11T22:57:09.971] [WARN] default - Ruta inexistente en el servidor: /api/login - Metodo: GET
+[2023-05-11T22:57:17.545] [WARN] default - Ruta inexistente en el servidor: /api/login - Metodo: POST
+[2023-05-11T22:57:23.487] [WARN] default - Ruta inexistente en el servidor: /login - Metodo: POST
+[2023-05-11T22:57:54.765] [WARN] default - Ruta inexistente en el servidor: /signup - Metodo: POST
+[2023-05-11T22:58:14.321] [WARN] default - Ruta inexistente en el servidor: /signup/ - Metodo: POST
+[2023-05-11T22:58:41.216] [WARN] default - Ruta inexistente en el servidor: /api/signup/ - Metodo: POST
+[2023-05-11T22:58:47.895] [WARN] default - Ruta inexistente en el servidor: /api/signup - Metodo: POST
+[2023-05-13T11:37:47.465] [WARN] default - Ruta inexistente en el servidor: /api/auth - Metodo: POST
+[2023-05-13T11:38:01.391] [WARN] default - Ruta inexistente en el servidor: /api/auth/sign - Metodo: POST
+[2023-05-13T11:38:16.465] [WARN] default - Ruta inexistente en el servidor: /api/auht/sign - Metodo: POST
+[2023-05-13T13:52:23.286] [WARN] default - Ruta inexistente en el servidor: /api/products - Metodo: GET
+[2023-05-13T14:25:41.107] [WARN] default - Ruta inexistente en el servidor: /api/users - Metodo: GET
+[2023-05-13T14:46:36.031] [WARN] default - Ruta inexistente en el servidor: /api/auth - Metodo: POST

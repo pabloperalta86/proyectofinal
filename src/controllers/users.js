@@ -1,10 +1,11 @@
 import {getFindUser,getUsers,saveUser,getUserById,updateUserById,deleteUserById,deleteUsers} from "../services/users.js";
 import {transporter, userGmail} from "../utils/messages/gmail.js";
 import { logger } from "../utils/log/logger.js";
+import {UserService} from "../repositories/index.js";
 
 const getUsersController = async(req,res)=>{
     try {
-        const users = await getUsers();
+        const users = await UserService.getUsers();
         res.json({status:"success",data:users});
     } catch (error) {
         console.log(error);

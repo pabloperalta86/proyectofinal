@@ -9,7 +9,7 @@
     "start":"node src/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Pablo Peralta",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",

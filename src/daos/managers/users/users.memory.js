@@ -1,14 +1,11 @@
-import mongoose from "../../config/dbConnection.js";
-import { logger } from "../../utils/log/logger.js";
-
-class ContenedorMongo{
-    constructor(model){
-        this.model = model;
+class UsersMemory{
+    constructor(){
+        this.users=[];
     }
 
     async getById(id){
         try {
-            const object = await this.model.findById(id);
+            const object = this.users.find((user) => user.id == id);
             if(!object){
                 return {message:`Error al buscar: no se encontró el id ${id}`, error:true};
             } else {
@@ -21,17 +18,29 @@ class ContenedorMongo{
 
     async getAll(){
         try {
-            const objects = await this.model.find();
+            const objects = this.users;
             return objects;
         } catch (error) {
             return [];
         }
     }
 
-    async save(product){
+    async save(data){
         try {
-            const object = await this.model.create(product);
-            return `new document saved with id: ${object._id}`
+            const leer = this.users
+            if (leer.length == 0) {
+                const id = 1;
+                const nuevoUser = { id: id, ...data }
+                const userAdded = this.users.push(nuevoUser)
+                return userAdded
+            } else {
+                const onlyIds = leer.map((usero) => usero.id)
+                const largestId = Math.max.apply(Math, onlyIds);
+                const id = largestId + 1;
+                const nuevoUser = { id: id, ...data }
+                const userAdded = this.useros.push(nuevoUser)
+                return `new document saved with id: ${id}`
+            }
         } catch (error) {
             return {message:`Error al guardar: ${error}`};
         }
@@ -39,8 +48,10 @@ class ContenedorMongo{
 
     async updateById(body, id){
         try {
-            await this.model.findByIdAndUpdate(id, body,{new:true});
-            return {message:"Update successfully"}
+            id = parseInt(id)
+            const posicionUser = this.users.findIndex((user => user.id === id))
+            let userModificado = {id, ...body}
+            this.users[posicionUser] = userModificado
         } catch (error) {
             return {message:`Error al actualizar: no se encontró el id ${id}`};
         }
@@ -48,7 +59,7 @@ class ContenedorMongo{
 
     async deleteById(id){
         try {
-            await this.model.findByIdAndDelete(id);
+            this.users = this.useros.filter((usero) => usero.id != id)
             return {message:"delete successfully"};
         } catch (error) {
             return {message:`Error al borrar: no se encontró el id ${id}`};
@@ -57,7 +68,7 @@ class ContenedorMongo{
 
     async deleteAll(){
         try {
-            await this.model.delete({});
+            this.users = [];
             return {message:"delete successfully"}
         } catch (error) {
             return {message:`Error al borrar todo: ${error}`};
@@ -65,4 +76,4 @@ class ContenedorMongo{
     }
 }
 
-export {ContenedorMongo};
+export {UsersMemory};

@@ -1,4 +1,4 @@
-class Users{
+class ProductsMongo{
     constructor(model){
         this.model = model;
     }
@@ -6,19 +6,6 @@ class Users{
     async getById(id){
         try {
             const object = await this.model.findById(id);
-            if(!object){
-                return {message:`Error al buscar: no se encontró el id ${id}`, error:true};
-            } else {
-                return {message: object, error:false};
-            }
-        } catch (error) {
-            return {message:`Hubo un error ${error}`, error:true};
-        }
-    }
-
-    async getFindOne(data){
-        try {
-            const object = await this.model.getFindOne(data);
             if(!object){
                 return {message:`Error al buscar: no se encontró el id ${id}`, error:true};
             } else {
@@ -75,4 +62,4 @@ class Users{
     }
 }
 
-export {Users};
+export {ProductsMongo};

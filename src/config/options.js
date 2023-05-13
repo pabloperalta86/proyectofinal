@@ -5,7 +5,8 @@ const options = {
     server:{
         port:process.env.PORT,
         mode:process.env.SERVER_MODE,
-        secret:process.env.SECRET_SESSION
+        secret:process.env.SECRET_SESSION,
+        persistence:process.env.PERSISTENCE
     },
     mongo:{
         url:process.env.MONGO_URL

@@ -1,27 +1,31 @@
-import { cartManager } from "../models/index.js";
+import {getDaos} from "../daos/factory.js";
+import {options} from "../config/options.js";
+import {CartDTO} from "../daos/dtos/carts.js";
+
+const {cartManager} = await getDaos(options.server.persistence);
 
 const getCarts = async()=>{
-    return await userManager.getAll();
+    return await cartManager.getAll();
 };
 
 const getCartById = async(id)=>{
-    return await userManager.getById(id);
+    return await cartManager.getById(id);
 };
 
 const saveCart = async(user)=>{
-    return await userManager.save(user);
+    return await cartManager.save(user);
 };
 
 const updateCartById = async(body,id)=>{
-    return await userManager.updateById(body, id);
+    return await cartManager.updateById(body, id);
 };
 
 const deleteCartById = async(id)=>{
-    return await userManager.deleteById(id);
+    return await cartManager.deleteById(id);
 };
 
 const deleteCarts = async(id)=>{
-    return await userManager.deleteAll();
+    return await cartManager.deleteAll();
 };
 
 export {getCarts,saveCart,getCartById,updateCartById,deleteCartById,deleteCarts};

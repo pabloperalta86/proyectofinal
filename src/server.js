@@ -8,7 +8,7 @@ import cartsRouter from "./routes/carts.js";
 import usersRouter from "./routes/users.js";
 import { logger } from "./utils/log/logger.js";
 import os from "os";
-import mongoose from "./config/dbConnection.js";
+import {ConnectDB} from "./config/dbConnection.js";
 const PORT = process.env.PORT || 8080;
 const MODE = process.env.SERVER_MODE || "FORK";
 global.AdminEmail = "pablo.cavs.86@gmail.com";
@@ -61,5 +61,8 @@ if (MODE === "CLUSTER" && cluster.isPrimary){
     const server = app.listen(PORT, () => {
         logger.info(` >>>>> 🚀 Server started at http://localhost:${PORT} proceso: ${process.pid}`)
     })
+
+    ConnectDB.getInstance();
+
     server.on('error', (err) => logger.warn(err))
 }

@@ -1,4 +1,8 @@
-import { productManager } from "../models/index.js";
+import {getDaos} from "../daos/factory.js";
+import {options} from "../config/options.js";
+import {ProductDTO} from "../daos/dtos/products.js";
+
+const {productManager} = await getDaos(options.server.persistence);
 
 const getProducts = async()=>{
     return await productManager.getAll();
@@ -9,7 +13,7 @@ const getProductById = async(id)=>{
 };
 
 const saveProduct = async(user)=>{
-    return await productManager.save(user);
+    return await productManager.save(new ProductDTO(user));
 };
 
 const updateProductById = async(body,id)=>{

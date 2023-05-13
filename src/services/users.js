@@ -1,4 +1,8 @@
-import { userManager } from "../models/index.js";
+import {getDaos} from "../daos/factory.js";
+import {options} from "../config/options.js";
+import {UserDTO} from "../daos/dtos/users.js";
+
+const {userManager} = await getDaos(options.server.persistence);
 
 const getUsers = async()=>{
     return await userManager.getAll();

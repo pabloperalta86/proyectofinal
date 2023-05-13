@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import passport from "passport";
 import {Strategy} from "passport-local";
-import {UserModel} from "../models/dbModels/users.js";
+import {UserModel} from "../daos/dbModels/users.js";
 
 const LocalStrategy = Strategy;
 const BCRYP_SALT_ROUNDS = 12;

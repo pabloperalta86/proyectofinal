@@ -1,4 +1,4 @@
-class Products{
+class CartsMongo{
     constructor(model){
         this.model = model;
     }
@@ -62,4 +62,4 @@ class Products{
     }
 }
 
-export {Products};
+export {CartsMongo};
