@@ -9,11 +9,21 @@ import usersRouter from "./routes/users.js";
 import { logger } from "./utils/log/logger.js";
 import os from "os";
 import {ConnectDB} from "./config/dbConnection.js";
+import cors from "cors";
+
 const PORT = process.env.PORT || 8080;
 const MODE = process.env.SERVER_MODE || "FORK";
 global.AdminEmail = "pablo.cavs.86@gmail.com";
 
 const app = express();
+
+app.use(cors({credentials: true,
+    origin: 'http://localhost:3000'}
+/*{
+    origin:"http://localhost:4000",
+    methods:["GET","POST","DELETE","PUT"]
+}*/
+));
 
 if (MODE === "CLUSTER" && cluster.isPrimary){
     for(let i=0; i<os.cpus; i++){
@@ -35,7 +45,7 @@ if (MODE === "CLUSTER" && cluster.isPrimary){
     app.use(session({
         secret:process.env.SECRET_SESSION,
         resave:false,
-        saveUninitialized:false,
+        saveUninitialized:true,
         rolling:true,
         cookie:{maxAge: 6000000}
     }));
@@ -66,3 +76,5 @@ if (MODE === "CLUSTER" && cluster.isPrimary){
 
     server.on('error', (err) => logger.warn(err))
 }
+
+export {app};

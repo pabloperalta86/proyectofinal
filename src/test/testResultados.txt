@@ -1,0 +1,26 @@
+PS C:\Users\Pablo\Desktop\ProyectoBackEnd> npm test
+
+> proyectobackend@1.0.0 test
+> mocha src/test/test.js --timeout 20000 --exit
+
+Base de datos conectada
+La base de datos ya esta conectada
+La base de datos ya esta conectada
+La base de datos ya esta conectada
+La base de datos ya esta conectada
+Before: Este codigo se ejecuta antes de todas las pruebas
+[2023-05-14T11:03:56.573] [INFO] default -  >>>>> 🚀 Server started at http://localhost:4000 proceso: 19376
+
+
+  Test API products
+Login
+Usuario registrado y autenticado
+    ✔ GET Productos (49ms)
+    ✔ POST producto (103ms)
+    ✔ PUT Producto (95ms)
+    ✔ DELETE Producto (47ms)
+
+
+  4 passing (1s)
+
+PS C:\Users\Pablo\Desktop\ProyectoBackEnd>

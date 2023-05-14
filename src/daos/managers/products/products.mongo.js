@@ -36,8 +36,8 @@ class ProductsMongo{
 
     async updateById(body, id){
         try {
-            await this.model.findByIdAndUpdate(id, body,{new:true});
-            return {message:"Update successfully"}
+            const updateProduct = await this.model.findByIdAndUpdate(id, body,{new:true});
+            return updateProduct;
         } catch (error) {
             return {message:`Error al actualizar: no se encontró el id ${id}`};
         }

@@ -50,8 +50,9 @@ class ProductsMemory{
         try {
             id = parseInt(id)
             const posicionProduct = this.products.findIndex((product => product.id === id))
-            let productModificado = {id, ...body}
-            this.products[posicionProduct] = productModificado
+            let productModificado = {id, ...body};
+            this.products[posicionProduct] = productModificado;
+            return productModificado;
         } catch (error) {
             return {message:`Error al actualizar: no se encontró el id ${id}`};
         }

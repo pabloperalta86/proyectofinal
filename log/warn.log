@@ -160,3 +160,17 @@
 [2023-05-13T13:52:23.286] [WARN] default - Ruta inexistente en el servidor: /api/products - Metodo: GET
 [2023-05-13T14:25:41.107] [WARN] default - Ruta inexistente en el servidor: /api/users - Metodo: GET
 [2023-05-13T14:46:36.031] [WARN] default - Ruta inexistente en el servidor: /api/auth - Metodo: POST
+[2023-05-13T21:31:55.315] [WARN] default - Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (node:net:1372:16)
+    at listenInCluster (node:net:1420:12)
+    at Server.listen (node:net:1508:7)
+    at Function.listen (c:\Users\Pablo\Desktop\ProyectoBackEnd\node_modules\express\lib\application.js:635:24)
+    at file:///c:/Users/Pablo/Desktop/ProyectoBackEnd/src/server.js:61:24 {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '::',
+  port: 4000
+}
+[2023-05-14T00:55:38.328] [WARN] default - Ruta inexistente en el servidor: /api/auth/signup - Metodo: GET
+[2023-05-14T02:55:37.195] [WARN] default - Ruta inexistente en el servidor: /api/productos - Metodo: PUT

@@ -2,8 +2,9 @@ import {getProducts,saveProduct,getProductById,updateProductById,deleteProductBy
 
 const getProductsController = async(req,res)=>{
     try {
-        const users = await getProducts();
-        res.json({status:"success",data:users});
+        const product = await getProducts();
+        if (!product) product = [];
+        res.json({status:200,data:product});
     } catch (error) {
         console.log(error);
         res.json({status:"error",message:error.message});
@@ -12,8 +13,8 @@ const getProductsController = async(req,res)=>{
 
 const postProductController = async(req,res)=>{
     try {
-        const user = await saveProduct(req.body);
-        res.json({status:"success", data:user});
+        const product = await saveProduct(req.body);
+        res.json({status:200, data:product});
     } catch (error) {
         console.log(error);
         res.json({status:"error",message:error.message});
@@ -22,8 +23,8 @@ const postProductController = async(req,res)=>{
 
 const getProductByIdController = async(req,res)=>{
     try {
-        const users = await getProductById(req.params.id);
-        res.json({status:"success",data:users});
+        const product = await getProductById(req.params.id);
+        res.json({status:200,data:product});
     } catch (error) {
         console.log(error);
         res.json({status:"error",message:error.message});
@@ -32,8 +33,8 @@ const getProductByIdController = async(req,res)=>{
 
 const updateProductByIdController = async(req,res)=>{
     try {
-        const users = await updateProductById(req.body, req.params.id);
-        res.json({status:"success",data:users});
+        const product = await updateProductById(req.body, req.params.id);
+        res.json({status:200,data:product});
     } catch (error) {
         console.log(error);
         res.json({status:"error",message:error.message});
@@ -42,8 +43,8 @@ const updateProductByIdController = async(req,res)=>{
 
 const deleteProductsController = async(req,res)=>{
     try {
-        const users = await deleteProducts();
-        res.json({status:"success",data:users});
+        const product = await deleteProducts();
+        res.json({status:200,data:product});
     } catch (error) {
         console.log(error);
         res.json({status:"error",message:error.message});
@@ -52,8 +53,8 @@ const deleteProductsController = async(req,res)=>{
 
 const deleteProductByIdController = async(req,res)=>{
     try {
-        const users = await deleteProductById(req.params.id);
-        res.json({status:"success",data:users});
+        const product = await deleteProductById(req.params.id);
+        res.json({status:200,data:product});
     } catch (error) {
         console.log(error);
         res.json({status:"error",message:error.message});
