@@ -12,8 +12,8 @@ const getProductById = async(id)=>{
     return await productManager.getById(id);
 };
 
-const saveProduct = async(user)=>{
-    return await productManager.save(new ProductDTO(user));
+const saveProduct = async(product)=>{
+    return await productManager.save(new ProductDTO(product));
 };
 
 const updateProductById = async(body,id)=>{
@@ -24,7 +24,7 @@ const deleteProductById = async(id)=>{
     return await productManager.deleteById(id);
 };
 
-const deleteProducts = async(id)=>{
+const deleteProducts = async()=>{
     return await productManager.deleteAll();
 };
 

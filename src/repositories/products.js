@@ -12,7 +12,7 @@ class ProductRepository{
     };
 
     async saveProduct(product){
-        return await this.dao.create(product);
+        return await this.dao.save(product);
     };
 
     async getProductById(id){

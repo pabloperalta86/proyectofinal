@@ -1,0 +1,21 @@
+query{
+  getProducts{
+    title,
+    price,
+    thumbnail
+  }
+}
+
+mutation {
+  saveProduct(product: 
+    {title: "Picachu graphql", 
+      price: 9200, 
+      thumbnail: "http://imagen.jpg"
+    }) 
+  {
+    _id
+    title
+    thumbnail
+  }
+}
+

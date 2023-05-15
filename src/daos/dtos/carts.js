@@ -1,7 +1,8 @@
 class CartDTO {
     constructor(cart) {
-        this.products = cart.products
+        this._id = cart._id;
+        this.products = cart.products;
     }
 }
 
-export {CartDTO}
+export {CartDTO};

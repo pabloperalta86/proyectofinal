@@ -10,6 +10,10 @@ import { logger } from "./utils/log/logger.js";
 import os from "os";
 import {ConnectDB} from "./config/dbConnection.js";
 import cors from "cors";
+import {graphqlProductsController} from "./controllers/products.graphql.js";
+import {graphqlCartsController} from "./controllers/carts.graphql.js";
+import {graphqlUsersController} from "./controllers/users.graphql.js";
+
 
 const PORT = process.env.PORT || 8080;
 const MODE = process.env.SERVER_MODE || "FORK";
@@ -55,6 +59,9 @@ if (MODE === "CLUSTER" && cluster.isPrimary){
     app.use('/api/productos', productsRouter);
     app.use('/api/carritos', cartsRouter);
     app.use("/api/auth", usersRouter);
+    app.use("/api/graphql/productos", graphqlProductsController());
+    app.use("/api/graphql/users", graphqlUsersController());
+    app.use("/api/graphql/carritos", graphqlCartsController());
     
     app.use((req,_res,next) => {
         logger.info(`Ruta inexistente en el servidor: ${req.url} - Metodo: ${req.method}`);

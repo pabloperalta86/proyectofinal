@@ -25,12 +25,14 @@ class ProductsMongo{
         }
     }
 
-    async save(data){
+    async save(product){
         try {
-            const object = await this.model.create(data);
-            return `new document saved with id: ${object._id}`
+            let input = product; 
+            if(product.product) input = product.product
+            const object = await this.model.create(input);
+            return object
         } catch (error) {
-            return {message:`Error al guardar: ${error}`};
+            throw new Error(error.message);
         }
     }
 

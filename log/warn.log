@@ -174,3 +174,9 @@
 }
 [2023-05-14T00:55:38.328] [WARN] default - Ruta inexistente en el servidor: /api/auth/signup - Metodo: GET
 [2023-05-14T02:55:37.195] [WARN] default - Ruta inexistente en el servidor: /api/productos - Metodo: PUT
+[2023-05-14T22:06:00.985] [WARN] default - Ruta inexistente en el servidor: /api/graphql/products - Metodo: POST
+[2023-05-14T22:11:11.789] [WARN] default - Ruta inexistente en el servidor: /graphql - Metodo: GET
+[2023-05-14T22:11:16.837] [WARN] default - Ruta inexistente en el servidor: /graphiql - Metodo: GET
+[2023-05-14T22:33:27.182] [WARN] default - Ruta inexistente en el servidor: /api/graphiql - Metodo: GET
+[2023-05-14T22:34:08.727] [WARN] default - Ruta inexistente en el servidor: /api/graphql - Metodo: GET
+[2023-05-14T22:40:04.205] [WARN] default - Ruta inexistente en el servidor: /favicon.ico - Metodo: GET

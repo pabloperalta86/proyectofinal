@@ -1,5 +1,6 @@
 class UserDTO {
     constructor(user) {
+        this._id = user._id;
         this.user = user.user;
         this.password = user.password;
         this.nombre = user.nombre;
