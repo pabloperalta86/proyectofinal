@@ -21,13 +21,7 @@ global.AdminEmail = "pablo.cavs.86@gmail.com";
 
 const app = express();
 
-app.use(cors({credentials: true,
-    origin: 'http://localhost:3000'}
-/*{
-    origin:"http://localhost:4000",
-    methods:["GET","POST","DELETE","PUT"]
-}*/
-));
+app.use(cors());
 
 if (MODE === "CLUSTER" && cluster.isPrimary){
     for(let i=0; i<os.cpus; i++){
